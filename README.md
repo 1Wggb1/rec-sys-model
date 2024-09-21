@@ -7,7 +7,8 @@ Modelagem e implementação de um banco de dados orientado a documentos (mongodb
  - Tem um docker-compose para subir um mongodb com a implementação do modelo físico elaborado;
  
 ## Diagramas
-![Diagramas da solução][/static/arch-recommendation-system-if325-basic-architecture.drawio.svg]
+
+![Diagramas da solução](/static/arch-recommendation-system-if325-basic-architecture.drawio.svg)
 
 ## Subindo o banco de dados
 
@@ -62,7 +63,7 @@ db.recommendation.aggregate([{ $match: { "userProfile.name": "Naty" } },
 
 > As queries podem ser executados no mongoexpress como na imagem abaixo:
 
-![Query com agregação](/static/mongoexpress-query)
+![Query com agregação](static/mongoexpress-query.png)
 
 Como mostrado na imagem acima para executar queries só é necessário especificar os argumentos do método. No caso é utilizado uma query com agregação, então é necessário estar
 na aba `Advanced` e selecionar a opção `Aggregate query`.
