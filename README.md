@@ -10,6 +10,8 @@ Modelagem e implementação de um banco de dados orientado a documentos (mongodb
 
 ![Diagramas da solução](/static/arch-recommendation-system-if325-basic-architecture.drawio.svg)
 
+![Diagrama modelo](/static/arch-recommendation-system-if325-models.drawio.svg)
+
 ## Subindo o banco de dados
 
 > Nota: Para subir o banco de dados é necessário ter o Docker e Docker 
