@@ -1,6 +1,6 @@
-# Recommendation system database model
+# Design de banco de dados para um sistema de recomendação de um e-commerce.
 
-Modelagem e implementação de um banco de dados orientado a documentos (mongodb) para um sistema de recomendação fictício.
+Modelagem e implementação de um banco de dados orientado a documentos (MongoDB) para um sistema de recomendação fictício.
 
 ## O que tem neste repo?
  - Tem um drawio com uma arquitetura geral do fluxo de recomendação e a modelagem conceitual, lógica e física do sistema de recomendação;
@@ -19,7 +19,7 @@ Modelagem e implementação de um banco de dados orientado a documentos (mongodb
 
 Executar o comando: `docker compose up -d` para subir os container
 
-## Visualizando e integarindo com o banco de dados
+## Visualizando e interagindo com o banco de dados
 
 É possível interagir com mongodb pelo mongo-express. É possível acessá-lo pelo browser na url 
 `http://localhost:8081`. O usuário e a senha estão presentes no docker-compose.yml (user: `user`, password: `pass`).
