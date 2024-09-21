@@ -15,5 +15,6 @@ Executar o comando: `docker compose up -d` para subir os container
 
 ## Acessando os dados
 
-É possível interagir com mongodb pelo mongo-express que sobe junto com mongodb. É possível acessá-lo pelo browser na url 
-`http://localhost:8081`. O usuário e a senha estão presentes no docker-compose.yml.
+É possível interagir com mongodb pelo mongo-express. É possível acessá-lo pelo browser na url 
+`http://localhost:8081`. O usuário e a senha estão presentes no docker-compose.yml (user: `user`, password: `pass`).
+O database criado se chama `rec_system_db`. 
