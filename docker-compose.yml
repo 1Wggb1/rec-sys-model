@@ -2,20 +2,10 @@ services:
   mongo:
     restart: always
     image: mongo
-    #command: mongod --replSet rs0
-    expose:
+    ports:
       - 27017:27017
-    #networks:
-      #- mongo-cluster
     volumes:
       - ./create-schema.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-  mongo2:
-    image: mongo
-    #command: mongod --replSet rs0
-    expose:
-      - 27018:27018
-    #networks:
-      #- mongo-cluster
   mongo-express:
     image: mongo-express
     ports:
@@ -28,9 +18,3 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
     links:
       - mongo
-    #networks:
-      #- mongo-cluster
-
-#networks:
-  #mongo-cluster:
-    #driver: bridge

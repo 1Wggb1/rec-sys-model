@@ -215,12 +215,13 @@ db.recommendation.insertMany([
 
 //1 - Most viewed products and productCategory
 db.interaction.aggregate([{ $match: { interactionType: "viewed"} }, { "$group": { _id: "$product", count: { $sum: 1 } } }]);//product
+
 db.interaction.aggregate([{ $match: { interactionType: "viewed"} }, 
 { "$group": { _id: "$product.productCategoryId", count: { $sum: 1 } } }, 
 { "$lookup": { "from": "product_category", "localField": "_id", "foreignField": "_id", "as": "category" } }//look to "join" with productCategory 
 ]);//productCategory
 
-//2 - Most added/removed to cart
+//2 - Most added/removed to/from cart
 db.interaction.aggregate([{ $match: { interactionType: "add_to_cart"} }, { "$group": { _id: "$product", count: { $sum: 1 } } }]);//added to cart
 db.interaction.aggregate([{ $match: { interactionType: "removed_from_cart"} }, { "$group": { _id: "$product", count: { $sum: 1 } } }]);//removed from cart
 
@@ -233,14 +234,9 @@ db.interaction.aggregate([{ $match: { "userProfile.name": "Will"} },
 { "$lookup": { "from": "product_category", "localField": "_id", "foreignField": "_id", "as": "category" } }
 ]);
 
-//5 - Similar User product
-db.recommendation.aggregate([{ $match: { "userProfile.name": "Will"} }, 
-{ "$group": { _id: "$products._id", count: { $sum: 1 } } }
-]);
-
-db.interaction.aggregate([{ $match: { "userProfile.name": "Will", interactionType: "add_to_cart"} }, 
-{ "$group": { _id: "$product", count: { $sum: 1 } }},
-{ "$lookup": { "from": "recommendation", "localField": "_id", "foreignField": "products", "as": "rec" } }
-]);
-
+//5 - Recommendation that user add to cart
+db.recommendation.aggregate([{ $match: { "userProfile.name": "Naty" } }, 
+{ "$group": { _id: "$products._id" } }, { "$lookup": { "from": "interaction", "localField": "_id", "foreignField": "product._id", "as": "interacted_products" } }, 
+{$unwind: "$interacted_products"}, 
+{ $match: { "interacted_products.interactionType": "add_to_cart", "interacted_products.userProfile.name": "Naty" } }] );
 */
